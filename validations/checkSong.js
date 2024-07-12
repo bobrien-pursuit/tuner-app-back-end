@@ -3,7 +3,7 @@ const checkName = (req, res, next) => {
     if (name) {
         next();
     } else {
-        res.status(400).json({ error: "Name is required."});
+        res.status(400).json({ error: "Name of song is required."});
     } // end if/else
 }; //ends checkName()
 
