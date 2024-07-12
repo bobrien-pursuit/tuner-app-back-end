@@ -28,7 +28,11 @@ const checkAlbum = (req, res, next) => {
 const checkTime = (req, res, next) => {
     const { time } = req.body;
     if (time.match(/^[0-5]?[0-9](?::[0-5]?[0-9])?$/g)) {
-        next();
+        const timeArr = time.split(':')
+        if (timeArr[0] >= 0 && timeArr[1] > 0)
+                next();
+        else
+            res.status(400).json({ error: "Enter song length greater than 0:00"})
     } else {
         res.status(400).json({ error: "Time is required in mm:ss"});
     } // end if/else
